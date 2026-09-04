@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std; 
+
+
+/*
+'C' (cyan)
+'M' (magenta)
+'Y' (yellow)
+'W' (white)
+'G' (grey)
+'B' (black)
+*/
+
+int main() 
+{
+	int n, m;
+	char c;
+	bool b = true;
+	cin >> n >> m;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			cin >> c;
+			if (c == 'C' || c == 'M' || c == 'Y')
+				b = false;
+		}
+	}
+
+	cout << (b ? "#Black&White" : "#Color");
+	return 0;
+}

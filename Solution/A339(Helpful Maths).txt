@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string s;
+	cin >> s;
+	int c;
+	for (int i = 2 ; i < s.length(); i += 2)
+	{
+		c = i;
+		while (true)
+		{
+			if (c > 1 && s[c] < s[c - 2])
+			{
+				swap(s[c], s[c - 2]);
+				c -= 2;
+			}
+			else
+				break;
+		}
+	}
+	cout << s;
+	return 0;
+}

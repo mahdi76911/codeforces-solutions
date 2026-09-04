@@ -1,0 +1,23 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+int n, a[100], mi=0,Mi=0;
+cin>>n;
+for(int i=0;i<n;i++)
+{
+cin>>a[i];
+if(a[Mi]<a[i])
+Mi = i;
+if(a[mi]>=a[i])
+mi = i;
+}
+if(mi<Mi)
+cout<<Mi+(n-1-mi)-1;
+else
+cout<<Mi+(n-1-mi);
+
+return 0;
+}

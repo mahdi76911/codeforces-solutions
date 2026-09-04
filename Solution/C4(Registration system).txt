@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	int n, c = 0 , di[100000];
+	for (int i = 0; i < 100000; i++)
+		di[i] = 0;
+	string s, res = "";
+	static string d[100000];
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		bool b = true;
+		cin >> s;
+		for (int j = 0; j < c; j++)
+		{
+			if (s == d[j])
+			{
+				res += s + to_string(di[j]) + "\n";
+				di[j]++;
+				b = false;
+				break;
+			}
+		}
+		if (b)
+		{
+			d[c] = s;
+			di[c]++;
+			c++;
+			res += "OK\n";
+		}
+	}
+	cout << res;
+	return 0;
+}

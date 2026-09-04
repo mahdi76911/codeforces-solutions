@@ -1,0 +1,14 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	int r, x0, y0, x1, y1, x, y, w;
+	cin >> r >> x0 >> y0 >> x1 >> y1;
+	x = fabs(x0 - x1);
+	y = fabs(y0 - y1);
+	cout << ceil(sqrt(pow(x, 2) + pow(y, 2)) / (2 * r));
+	return 0;
+}

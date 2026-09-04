@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n, res;
+	cin >> n;
+	res = n;
+	for (int i = 1; i < n; i++)
+	{
+		res += i * (n - i);
+	}
+	cout << res;
+	return 0;
+}
+
+#include <iostream>
+using namespace std; int main(){long long int n; cin >> n; cout << n+((n-1)*n*(n+1)/6); return 0; }

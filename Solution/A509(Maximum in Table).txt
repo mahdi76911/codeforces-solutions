@@ -1,0 +1,26 @@
+#include<iostream>
+
+using namespace std;
+
+int i(int x, int y)
+{
+if(x==2)
+return y;
+else if(y==2)
+return x;
+else
+return i(x-1,y) + i(x,y-1);
+}
+
+int main()
+{
+int n;
+cin>>n;
+if(n<=2)
+{
+cout<<n;
+return 0;
+}
+cout<<i(n,n);
+return 0;
+}

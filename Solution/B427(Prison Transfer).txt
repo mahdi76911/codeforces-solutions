@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n, t, c, counter = 0, res = 0;
+	unsigned int x[200000];
+	cin >> n >> t >> c;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> x[i];
+		if (x[i] > t)
+		{
+			if (counter >= c)
+				res += ((counter + 1) - c);
+			counter = 0;
+		}
+		else
+			counter++;
+	}
+	if (counter >= c)
+		res += ((counter + 1) - c);
+	cout << res;
+	return 0;
+}

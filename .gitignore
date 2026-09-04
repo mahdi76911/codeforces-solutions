@@ -1,0 +1,43 @@
+# Build output
+Debug/
+Release/
+*.exe
+*.obj
+*.o
+*.o.*
+*.res
+*.ilk
+*.pdb
+*.idb
+*.suo
+*.aps
+*.pch
+*.ncb
+*.ap_
+*.aps_
+*.exp
+*.lib
+*.tlog
+*.log
+*.lastbuildstate
+*.unsuccessfulbuild
+*.aps.user
+
+# VS / Dev-C++ / Code::Blocks caches
+.vs/
+ipch/
+*.VC.db
+*.VC.opendb
+*.dev
+*.depend
+*.layout
+*.cbp
+gmon.out
+
+# Archives
+*.rar
+*.zip
+*.7z
+
+# PDFs (copyrighted books)
+*.pdf

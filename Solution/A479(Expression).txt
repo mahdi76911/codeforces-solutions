@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int a, b, c, res[4];
+	cin >> a >> b >> c;
+	res[0] = a + b + c;
+	res[1] = (a + b)*c;
+	res[2] = a * (b + c);
+	res[3] = a * b * c;
+	for (int i = 1; i < 4; i++)
+		if (res[0] < res[i])
+			res[0] = res[i];
+	cout << res[0];
+	return 0;
+}

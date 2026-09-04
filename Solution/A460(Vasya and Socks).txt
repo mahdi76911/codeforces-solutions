@@ -1,0 +1,17 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n, m, res = 0;
+	cin >> n >> m;
+	while (n >= m)
+	{
+		res += n - n % m;
+		n = n % m + n / m;
+	}
+	res += n;
+	cout << res;
+	return 0;
+}

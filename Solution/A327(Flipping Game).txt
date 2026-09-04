@@ -1,0 +1,121 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	int n, a, c = 0, x = 0, m = 0, r = -1;
+
+	cin >> n;
+	while (n--)
+	{
+		cin >> a;
+		c += a;
+		
+		x += 1 - a * 2;
+		r = max(r, x - m);
+		m = min(x, m);
+	}	
+	cout << r + c;
+	return 0;
+}
+
+
+
+Naghes:
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int SubSeriesSumMax(int a[], int s, int e)	//max ... beyne azaye s ta khod e serie a 
+{
+	if (s == e)
+		return a[s];
+	if (a[s] < 0)
+		return SubSeriesSumMax(a, s + 1, e);
+	//bakhshe cut kardan navar
+	for (int i = s + 1; i < e; i += 2)
+	{
+		if (a[i]<0 && fabs(a[i]) > a[i - 1] && fabs(a[i]) > a[i + 1])
+			return fmax(SubSeriesSumMax(a, s, i - 1), SubSeriesSumMax(a, i + 1, e));
+	}
+	//bakhshe jam kardane greedy
+
+
+
+
+	return 0;
+}
+
+int main()
+{
+	int n, a[100], m = 0, res = 0;
+	bool x;
+	for (int i = 0; i < 100; i++)
+		a[i] = 0;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> x;
+		if (x)
+		{
+			if (a[m] > 0)
+				m++;
+			a[m]--;
+			res++;
+		}
+		else
+		{
+			if (a[m] < 0)
+				m++;
+			a[m]++;
+		}
+	}
+	cout << SubSeriesSumMax(a, 0, m);
+	for (int i = 0; i <= m; i++)
+		cout << a[i] << endl;
+	cout << res;
+	cin >> n;
+	return 0;
+}
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n, a[100], m = 0, ones = 0, c = 0, max = 0, res;
+	bool x;
+	for (int i = 0; i < 100; i++)
+		a[i] = 0;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> x;
+		if (x)
+		{
+			if (a[m] > 0)
+				m++;
+			a[m]--;
+			ones++;
+		}
+		else
+		{
+			if (a[m] < 0)
+				m++;
+			a[m]++;
+		}
+	}
+	res = ones;
+	cout << res + max;
+	cin >> n;
+	return 0;
+}

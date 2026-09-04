@@ -1,0 +1,12 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	int a, b;
+	cin >> a >> b;
+	cout << floor((log10((double)b / a) / log10((double)3 / 2))+1);
+	return 0;
+}

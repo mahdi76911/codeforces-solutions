@@ -1,0 +1,32 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+	if (n < m)
+		cout << -1;
+	else
+		if ((int)ceil((double)n / 2) % m == 0)
+			cout << ceil((double)n / 2) + ((int)ceil((double)n / 2) % m);
+		else
+			cout << (ceil((double)n / 2) + (m - (int)ceil((double)n / 2) % m));
+	return 0;
+}
+
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+	cout << ((n < m) ? -1 :  ceil((double)ceil((double)n / 2) / m) * m);
+	return 0;
+}

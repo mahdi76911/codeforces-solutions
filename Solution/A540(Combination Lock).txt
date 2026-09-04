@@ -1,0 +1,21 @@
+#include<iostream>
+#include<string>
+#include<math.h>
+
+using namespace std;
+
+int main()
+{
+int n, res=0;
+string a, b;
+cin>>n>>a>>b;
+for(int i=0;i<n;i++)
+{
+if(fabs(a[i]-b[i]) > 5)
+res += 10 - fabs(a[i]-b[i]);
+else
+res += fabs(a[i]-b[i]);
+}
+cout<<res;
+return 0;
+}

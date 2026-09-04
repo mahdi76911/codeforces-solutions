@@ -1,0 +1,41 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	int l, n, a[1000];
+	float max;
+	cin >> n >> l;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a[i];
+	}
+
+	for (int i = 1; i < n; i++)
+	{
+		int c = i;
+		while (c > 0)
+		{
+			if (a[c] < a[c - 1])
+			{
+				swap(a[c], a[c - 1]);
+				c--;
+			}
+			else
+				break;
+		}
+	}
+	if (a[0] > l - a[n - 1])
+		max = a[0];
+	else
+		max = l - a[n - 1];
+	for (int i = 1; i < n; i++)
+	{
+		if (max < (float)(a[i] - a[i - 1]) / 2)
+			max = (float)(a[i] - a[i - 1]) / 2;
+	}
+	cout << fixed << setprecision(10) << max;
+	return 0;
+}

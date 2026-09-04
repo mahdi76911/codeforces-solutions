@@ -1,0 +1,254 @@
+wrong answer: 3463 right answer: 3459
+first code:
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	int n, x, floor = 1;
+	unsigned long long int res = 0;
+	bool b[300001];
+	cin >> n;
+	for (int i = 0; i < 300001; i++)
+		b[i] = true;
+	b[0] = false;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> x;
+		if (x > 0 && x <= n && b[x])
+		{
+			b[x] = false;
+		}
+		else if (x <= 0)
+		{
+			int count = floor;
+			while (true)
+			{
+				if (b[count])
+				{
+					if (floor == count)
+						floor++;
+					res += abs(count - x);
+					b[count] = false;
+					break;
+				}
+				count++;
+			}
+		}
+		else if (x > n)
+		{
+			int count = n;
+			while (true)
+			{
+				if (b[count])
+				{
+					res += abs(count - x);
+					b[count] = false;
+					break;
+				}
+				count--;
+			}
+		}
+		else if (b[x] == false)
+		{
+			int count = 1;
+			while (true)
+			{
+				if (x + count <= n && b[x + count])
+				{
+					res += count;
+					b[x + count] = false;
+					break;
+				}
+				else if (x - count > 0 && b[x - count])
+				{
+					res += count;
+					b[x - count] = false;
+					break;
+				}
+				count++;
+			}
+		}
+	}
+	cout << res;
+	cin >> n;
+	return 0;
+}
+
+
+
+second code:
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	int n, x, floor = 1, mfc = 0;
+	int mfv[1000];
+	unsigned long long int res = 0;
+	bool b[300001];
+	cin >> n;
+	for (int i = 0; i < 300001; i++)
+		b[i] = true;
+	b[0] = false;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> x;
+		if (x > 0 && x <= n && b[x])
+		{
+			b[x] = false;
+		}
+		else if (x <= 0)
+		{
+			int count = floor;
+			while (true)
+			{
+				if (b[count])
+				{
+					if (floor == count)
+						floor++;
+					res += abs(count - x);
+					b[count] = false;
+					break;
+				}
+				count++;
+			}
+		}
+		else if (x > n)
+		{
+			int count = n;
+			while (true)
+			{
+				if (b[count])
+				{
+					res += abs(count - x);
+					b[count] = false;
+					break;
+				}
+				count--;
+			}
+		}
+		else if (b[x] == false)
+		{
+			mfv[mfc] = x;
+			mfc++;
+		}
+	}
+
+	for (int i = 0; i < mfc; i++)
+	{
+		int count = 1;
+		while (true)
+		{
+			if (mfv[i] + count <= n && b[mfv[i] + count])
+			{
+				res += count;
+				b[mfv[i] + count] = false;
+				break;
+			}
+			else if (mfv[i] - count > 0 && b[mfv[i] - count])
+			{
+				res += count;
+				b[mfv[i] - count] = false;
+				break;
+			}
+			count++;
+		}
+	}
+	cout << res;
+	cin >> n;
+	return 0;
+}
+
+Third Code:
+Wrong Answer at Test 9:
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n, x, max, min;
+	unsigned long long int res = 0;
+	bool b[300001];
+	cin >> n;
+	b[0] = false;
+	for (int i = 1; i <= n; i++)
+		b[i] = true;
+	for (int i = n + 1; i < 300001; i++)
+		b[i] = false;
+	max = n;
+	min = 1;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> x;
+		if (x > min && x < max)
+		{
+			if (b[x])
+				b[x] = false;
+			else
+			{
+				int c = 1;
+				while (true)
+				{
+					if (b[x + c])
+					{
+						res += c;
+						b[x + c] = false;
+						if (x + c == max)
+							max--;
+						break;
+					}
+					if (b[x - c])
+					{
+						res += c;
+						b[x - c] = false;
+						if (x - c == min)
+							min++;
+						break;
+					}
+					c++;
+				}
+			}
+		}
+		else if (x >= max)
+		{
+			res += x - max;
+			b[max] = false;
+			max--;
+			while (!b[max])
+				max--;
+		}
+		else if (x <= min)
+		{
+			res += min - x;
+			b[min] = false;
+			min++;
+			while (!b[min])
+				min++;
+		}
+	}
+	cout << res;
+	return 0;
+}
+
+Answer:
+#include<bits/stdc++.h>
+using namespace std;
+long long n,a[400000],c;
+int main()
+{
+	cin>>n;
+	for(int i=1;i<=n;i++)
+		cin>>a[i];
+	sort(a+1,a+n+1);
+	for(int i=1;i<=n;i++)
+		c+=abs(i-a[i]);
+	cout<<c;
+	return 0;
+}
+

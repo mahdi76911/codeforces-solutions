@@ -1,0 +1,100 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string s, t;
+	cin >> s >> t;
+	switch (s[0])
+	{
+	case 'a':
+		s[0] = '1';
+		break;
+	case 'b':
+		s[0] = '2';
+		break;
+	case 'c':
+		s[0] = '3';
+		break;
+	case 'd':
+		s[0] = '4';
+		break;
+	case 'e':
+		s[0] = '5';
+		break;
+	case 'f':
+		s[0] = '6';
+		break;
+	case 'g':
+		s[0] = '7';
+		break;
+	case 'h':
+		s[0] = '8';
+		break;
+	default:
+		break;
+	}
+	switch (t[0])
+	{
+	case 'a':
+		t[0] = '1';
+		break;
+	case 'b':
+		t[0] = '2';
+		break;
+	case 'c':
+		t[0] = '3';
+		break;
+	case 'd':
+		t[0] = '4';
+		break;
+	case 'e':
+		t[0] = '5';
+		break;
+	case 'f':
+		t[0] = '6';
+		break;
+	case 'g':
+		t[0] = '7';
+		break;
+	case 'h':
+		t[0] = '8';
+		break;
+	default:
+		break;
+	}
+	int x, y;
+	x = t[0] - s[0];
+	y = t[1] - s[1];
+	if (abs(x) > abs(y))
+		cout << abs(x) << endl;
+	else
+		cout << abs(y) << endl;
+	while (!(x == 0 && y == 0))
+	{
+		if (x > 0)
+		{
+			cout << "R";
+			x--;
+		}
+		if (x < 0)
+		{
+			cout << "L";
+			x++;
+		}
+		if (y > 0)
+		{
+			cout << "U";
+			y--;
+		}
+		if (y < 0)
+		{
+			cout << "D";
+			y++;
+		}
+		cout << endl;
+	}
+	return 0;
+}

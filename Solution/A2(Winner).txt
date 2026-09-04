@@ -1,0 +1,81 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	int n, PN = 0, MaxPN = 1;
+	bool B;
+	string name[1000], Pname[1000];
+	int score[1000], Pscore[1000], maxscore[1000];
+	cin >> n;
+	cin.ignore();
+	for (int i = 0; i < 1000; i++)
+	{
+		Pscore[i] = 0;
+		maxscore[i] = 0;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		B = true;
+		cin >> name[i] >> score[i];
+		for (int j = 0; j < PN; j++)
+		{
+			if (name[i] == Pname[j])
+			{
+				B = false;
+				Pscore[j] += score[i];
+				break;
+			}
+		}
+		if (B)
+		{
+			Pname[PN] = name[i];
+			Pscore[PN] = score[i];
+			PN++;
+		}
+	}
+	int c;
+	for (int i = 1; i < PN; i++)
+	{
+		c = i;
+		while (c > 0)
+		{
+			if (Pscore[c] < Pscore[c - 1])
+			{
+				swap(Pscore[c], Pscore[c - 1]);
+				swap(Pname[c], Pname[c - 1]);
+				c--;
+			}
+			else
+				break;
+		}
+	}
+	for (int i = PN - 1; i > 0; i--)
+		if (Pscore[i] == Pscore[i - 1])
+			MaxPN++;
+		else
+			break;
+	if (MaxPN == 1)
+	{
+		cout << Pname[PN - 1];
+		return 0;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = PN - 1; j > PN - 1 - MaxPN; j--)
+		{
+			if (name[i] == Pname[j])
+			{
+				maxscore[j] += score[i];
+				if (maxscore[j] >= Pscore[PN - 1])
+				{
+					cout << name[i];
+					return 0;
+				}
+			}
+		}
+	}
+	return 0;
+}

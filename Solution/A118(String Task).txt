@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string a, res = "";
+	cin >> a;
+	char V[] = { 'a', 'o', 'y', 'e', 'u', 'i' };
+	for (int i = 0; i < a.length(); i++)
+	{
+		if (a[i] >= 'A' && a[i] <= 'Z')
+			a[i] -= ('Z' - 'z');
+		if (a[i] != V[0] && a[i] != V[1] && a[i] != V[2] && a[i] != V[3] && a[i] != V[4] && a[i] != V[5])
+		{
+			res += ".";
+			res += a[i];
+		}
+	}
+	cout << res;
+	return 0;
+}

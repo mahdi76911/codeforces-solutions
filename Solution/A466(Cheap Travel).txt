@@ -1,0 +1,19 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	int n, m, a, b, res = 0;
+	cin >> n >> m >> a >> b;
+	if ((float)b / m < a)
+		if ((n % m) * a + (n / m) * b > b*ceil((float)n / m))
+			res = b*ceil((float)n / m);
+		else
+			res = (n % m) * a + (n / m) * b;
+	else
+		res = a*n;
+	cout << res;
+	return 0;
+}

@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n, res = 0, a, p, mp = 101;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a >> p;
+		if (p < mp)
+			mp = p;
+		res += a*mp;
+	}
+	cout << res;
+	return 0;
+}

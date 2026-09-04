@@ -1,0 +1,91 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	// majmu 1 ha dar a[1], majmu 2 ha dar a[2] ...
+	int n, x, maxn = 0, min = 100000;
+	long long int a[100002];
+	cin >> n;
+	for (int i = 0; i <= 100000; i++)
+		a[i] = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> x;
+		a[x] += x;
+		if (maxn < x)
+			maxn = x;
+		if (min > x)
+			min = x;
+	}
+	for (int i = min + 1; i <= maxn + 1; i++)
+	{
+		a[i] = max(a[i - 1], a[i] + a[i - 2]);
+	}
+	cout << a[maxn];
+	return 0;
+}
+
+
+
+Time Limit:
+
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int MaxSumSeries(int a[], int s, int f)
+{
+	if (s >= f)
+		return a[f];
+	if (a[s + 1] == 0)
+		return a[s] + MaxSumSeries(a, s + 2, f);
+	int n = f - s + 1;
+	if (n <= 3)
+	{
+		switch (n)
+		{
+		case 1:
+			return a[s];
+			break;
+		case 2:
+			return max(a[s], a[f]);
+			break;
+		case 3:
+			return max(a[s + 1], a[s] + a[f]);
+			break;
+		default:
+			break;
+		}
+	}
+	else
+		return max(a[s] + MaxSumSeries(a, s + 2, f), a[s + 1] + MaxSumSeries(a, s + 3, f));
+}
+
+int main()
+{
+	// majmu 1 ha dar a[1], majmu 2 ha dar a[2] ...
+	int n, a[100001], res, max = 0, min = 100000;
+	cin >> n;
+	for (int i = 0; i <= 100000; i++)
+		a[i] = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> res;
+		a[res] += res;
+		if (max < res)
+			max = res;
+		if (min > res)
+			min = res;
+	}
+	/*for (int i = 0; i <= 100000; i++)
+		a[i] *= i;*/
+	res = MaxSumSeries(a, min, max);
+	/*for (int i = 1; i <= max; i++)
+		cout << a[i]<<endl;*/
+	cout << res;
+	return 0;
+}
